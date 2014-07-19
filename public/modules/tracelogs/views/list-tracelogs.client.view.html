@@ -1,0 +1,19 @@
+<section data-ng-controller="TracelogsController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Tracelogs</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="tracelog in tracelogs" data-ng-href="#!/tracelogs/{{tracelog._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="tracelog.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="tracelog.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="tracelog.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!tracelogs.$resolved || tracelogs.length">
+    	No Tracelogs yet, why don't you <a href="/#!/tracelogs/create">create one</a>?
+    </div>
+</section>
